@@ -1,0 +1,52 @@
+version: '3'
+
+volumes:
+  prometheus-data: {}
+  grafana-data: {}
+
+networks:
+  metrics: {}
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./samples/Web/Dockerfile
+    ports:
+      - 5000:80
+    networks:
+      - metrics
+
+  prometheus:
+    image: prom/prometheus
+    depends_on:
+      - web
+    volumes:
+      - ./samples/prometheus/:/etc/prometheus/
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - 9090:9090
+    networks:
+      - metrics
+    restart: always
+
+  grafana:
+    image: grafana/grafana
+    user: '104'
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./samples/grafana/provisioning/:/etc/grafana/provisioning/
+    env_file:
+      - ./samples/grafana/config.monitoring
+    networks:
+      - metrics
+    restart: always
