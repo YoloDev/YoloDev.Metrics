@@ -6,7 +6,7 @@ using YoloDev.Metrics.Abstractions.Options;
 using YoloDev.Metrics.Histogram;
 using YoloDev.Metrics.Impl;
 
-namespace YoloDev.Metrics.Tests
+namespace YoloDev.Metrics.Test
 {
   public class HistogramTests
   {

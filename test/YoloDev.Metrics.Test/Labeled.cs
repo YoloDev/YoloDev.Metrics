@@ -1,7 +1,7 @@
 using System.Collections.Immutable;
 using YoloDev.Metrics.Impl;
 
-namespace YoloDev.Metrics.Tests
+namespace YoloDev.Metrics.Test
 {
   internal static class Labeled
   {

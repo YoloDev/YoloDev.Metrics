@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace YoloDev.Metrics.Tests
+namespace YoloDev.Metrics.Test
 {
   internal static class KVP
   {

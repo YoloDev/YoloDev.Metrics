@@ -1,0 +1,25 @@
+<Project>
+  <Import Project="./build/Mono.DotNetCore.props" />
+  <PropertyGroup>
+    <Authors>Aleksander Heintz</Authors>
+    <Product>YoloDev Metrics</Product>
+    <RepositoryUrl>https://github.com/YoloDev/YoloDev.Metrics</RepositoryUrl>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/YoloDev/YoloDev.Metrics</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryRoot>$(MSBuildThisFileDirectory)</RepositoryRoot>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>$(NoWarn);NU5125</NoWarn>
+    <DebugType>embedded</DebugType>
+    <DisableImplicitFSharpCoreReference>true</DisableImplicitFSharpCoreReference>
+  </PropertyGroup>
+
+  <!-- Build settings -->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <!-- Versions -->
+  <PropertyGroup>
+  </PropertyGroup>
+</Project>

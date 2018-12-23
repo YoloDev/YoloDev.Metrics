@@ -4,7 +4,7 @@ using Xunit;
 using YoloDev.Metrics.Abstractions.Options;
 using YoloDev.Metrics.Impl;
 
-namespace YoloDev.Metrics.Tests
+namespace YoloDev.Metrics.Test
 {
   public class GaugeTests
   {

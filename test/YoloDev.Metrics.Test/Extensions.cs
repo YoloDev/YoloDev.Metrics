@@ -4,7 +4,7 @@ using System.Linq;
 using YoloDev.Metrics.Impl;
 using YoloDev.Metrics.Visitors;
 
-namespace YoloDev.Metrics.Tests
+namespace YoloDev.Metrics.Test
 {
   internal static class Extensions
   {

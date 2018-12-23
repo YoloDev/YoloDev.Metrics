@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoloDev.Metrics", "src\Yolo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{61FFA9AD-60AA-4650-91E0-055326C5811E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoloDev.Metrics.Tests", "test\YoloDev.Metrics.Tests\YoloDev.Metrics.Tests.csproj", "{34A62249-2A99-4052-A772-BE829502F067}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoloDev.Metrics.Test", "test\YoloDev.Metrics.Test\YoloDev.Metrics.Test.csproj", "{34A62249-2A99-4052-A772-BE829502F067}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoloDev.Metrics.AspNetCore", "src\YoloDev.Metrics.AspNetCore\YoloDev.Metrics.AspNetCore.csproj", "{9DEF684F-A902-4FB6-B92A-C23E3453A614}"
 EndProject

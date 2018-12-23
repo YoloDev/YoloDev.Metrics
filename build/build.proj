@@ -1,0 +1,28 @@
+<Project>
+  <ItemGroup>
+    <RestoreProject Include="..\YoloDev.Metrics.sln" />
+    <PublishProject Include="..\src\**\*.*proj" />
+    <TestProject Include="..\test\**\*.Test.*proj" />
+  </ItemGroup>
+
+  <Target Name="Restore">
+    <MSBuild Projects="@(RestoreProject)" Targets="Restore" ContinueOnError="ErrorAndStop" UnloadProjectsOnCompletion="true" UseResultsCache="false" />
+  </Target>
+
+  <Target Name="Build">
+    <PropertyGroup>
+      <OutputBaseDir>$(MSBuildThisFileDirectory)..\</OutputBaseDir>
+      <PackageOutputPath>$(OutputBaseDir)artifacts</PackageOutputPath>
+      <BuildProperties>Configuration=$(Configuration)</BuildProperties>
+      <VSTestLogger>trx%3BLogFileName=$(PackageOutputPath)\VSTestResults.trx</VSTestLogger>
+      <CoverletOutput>$(PackageOutputPath)\</CoverletOutput>
+      <CoverletOutputFormat>lcov,opencover</CoverletOutputFormat>
+      <!--<VSTestLogger Condition="'$(APPVEYOR)' == 'True'">Appveyor</VSTestLogger>-->
+    </PropertyGroup>
+
+    <RemoveDir Directories="$(PackageOutputPath)" />
+    <MSBuild Projects="@(PublishProject);@(TestProject)" Targets="Clean" ContinueOnError="ErrorAndStop" />
+    <MSBuild Projects="@(TestProject)" Targets="VSTest" Properties="Configuration=Debug;VSTestLogger=$(VSTestLogger);CollectCoverage=true;Include=[YoloDev.Metrics*]*;Exclude=[*.Test]*;CoverletOutput=$(CoverletOutput);CoverletOutputFormat=$(CoverletOutputFormat)" ContinueOnError="ErrorAndStop" />
+    <MSBuild Projects="@(PublishProject)" Targets="Pack" Properties="Configuration=Release;PackageOutputPath=$(PackageOutputPath);SourceLinkCreate=true;SourceLinkTest=true" ContinueOnError="ErrorAndStop" />
+  </Target>
+</Project>

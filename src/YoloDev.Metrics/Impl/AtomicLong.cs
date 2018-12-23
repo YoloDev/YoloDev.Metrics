@@ -14,11 +14,6 @@ namespace YoloDev.Metrics.Impl
 
     public long Value => Interlocked.Read(ref _value);
 
-    public void SetValue(long value)
-    {
-      Interlocked.Exchange(ref _value, value);
-    }
-
     public long Modify<TArg>(Func<long, TArg, long> func, TArg arg)
     {
       while (true)
