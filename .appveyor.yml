@@ -29,7 +29,7 @@ build_script:
 
 test_script:
   - ps: (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/mstest/$($env:APPVEYOR_JOB_ID)", (Resolve-Path artifacts\VSTestResults.trx))
-  - bash: ./script/upload-coverage.sh
+  - cmd: bash ./script/upload-coverage.sh
 
 artifacts:
   - path: artifacts/*.nupkg
